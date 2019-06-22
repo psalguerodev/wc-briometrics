@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build --prod --output-hashing none --single-bundle true",
-    "publish": "cp -Rf dist/* latest",
-    "start": "npm run build && serve -l 5001 dist",
+    "publish": "cp -Rf dist/* docs",
+    "start": "npm run build && serve -l 5001 docs",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
