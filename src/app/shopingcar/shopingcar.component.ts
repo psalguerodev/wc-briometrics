@@ -1,13 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Customer } from '../interfaces/customer.interface';
 
 export interface PeriodicElement {
   name: string;
   position: number;
   weight: number;
   symbol: string;
+}
+
+export interface ResponseEvent {
+  logNumber: string;
+  message: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
@@ -39,7 +45,22 @@ export class ShopingcarComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
+  @Input() customer: Customer = {fullName: '', documentType: 'DNI', documentNumber: ''};
+  @Output() evtProcess: EventEmitter<ResponseEvent> = new EventEmitter();
+
+  logNumber = '';
+  isProcessing = false;
+
   constructor(private _formBuilder: FormBuilder) {}
+
+  ngOnInit() {
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+  }
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
@@ -63,12 +84,18 @@ export class ShopingcarComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
 
-  ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
+  handleProcess(): void {
+    this.isProcessing = true;
+    const responseEvent: ResponseEvent = {
+        logNumber: `${Math.floor(Math.random() * 9999) + 3000}` ,
+        message : 'Successful process'
+    };
+    console.log(`From web component --> ${JSON.stringify(responseEvent)}`);
+    setTimeout(_ => {
+      this.logNumber = responseEvent.logNumber;
+      this.isProcessing = false;
+      this.evtProcess.emit(responseEvent);
+    }, 3000);
   }
+
 }

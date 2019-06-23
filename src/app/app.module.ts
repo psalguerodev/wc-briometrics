@@ -25,7 +25,7 @@ declare const customElements;
   ],
   providers: [],
   bootstrap: [
-    // AppComponent
+    AppComponent
   ],
   entryComponents: [
     BiometricComponent,
