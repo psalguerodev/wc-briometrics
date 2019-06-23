@@ -3,7 +3,7 @@
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>Transactions Cart</mat-card-title>
     <mat-card-subtitle>
-      <p style="color:orange;">{{customer.fullName}} | {{customer.documentType}}: {{customer.documentNumber}}
+      <p style="color:orange;">{{fullName}} | {{documentType}}: {{documentNumber}}
       </p>
       <pre style="color: lime" *ngIf="logNumber != '' && !isProcessing">Operation Number: {{logNumber}}</pre>
       <pre style="color: lime" *ngIf="isProcessing">Processing...</pre>

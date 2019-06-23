@@ -46,6 +46,9 @@ export class ShopingcarComponent implements OnInit {
   secondFormGroup: FormGroup;
 
   @Input() customer: Customer = {fullName: '', documentType: 'DNI', documentNumber: ''};
+  @Input() documentType: string;
+  @Input() documentNumber: string;
+  @Input() fullName: string;
   @Output() evtProcess: EventEmitter<ResponseEvent> = new EventEmitter();
 
   logNumber = '';
