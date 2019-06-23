@@ -4,28 +4,32 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { BiometricComponent } from './biometric/biometric.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { createCustomElement } from '@angular/elements';
+import { ShopingcarComponent } from './shopingcar/shopingcar.component';
 
 declare const customElements;
 
 @NgModule({
   declarations: [
     AppComponent,
-    BiometricComponent
+    BiometricComponent,
+    ShopingcarComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [
     // AppComponent
   ],
   entryComponents: [
-    BiometricComponent
+    BiometricComponent,
+    ShopingcarComponent
   ]
 })
 export class AppModule {
@@ -36,7 +40,9 @@ export class AppModule {
     console.log('initialize spa - application web');
     const { injector } = this;
     const ngCustomElement = createCustomElement(BiometricComponent, { injector });
+    const ngCustomElementCart = createCustomElement(ShopingcarComponent, { injector });
     customElements.define('wc-biometrics', ngCustomElement);
+    customElements.define('wc-transaction-cart', ngCustomElementCart);
   }
 
 }

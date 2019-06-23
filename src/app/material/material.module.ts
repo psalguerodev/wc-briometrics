@@ -7,6 +7,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   declarations: [],
@@ -19,6 +21,8 @@ import { MatTableModule } from '@angular/material/table';
     MatExpansionModule,
     MatProgressBarModule,
     MatTableModule,
+    MatCheckboxModule,
+    MatStepperModule
   ],
   exports: [
     MatButtonModule,
@@ -27,7 +31,9 @@ import { MatTableModule } from '@angular/material/table';
     MatCardModule,
     MatExpansionModule,
     MatProgressBarModule,
-    MatTableModule
+    MatTableModule,
+    MatCheckboxModule,
+    MatStepperModule
   ]
 })
 export class MaterialModule { }
