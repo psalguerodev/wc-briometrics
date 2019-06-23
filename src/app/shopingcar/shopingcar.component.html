@@ -93,7 +93,7 @@
           <div class="content-card">
             <form [formGroup]="secondFormGroup">
               <ng-template matStepLabel>Biometrics validation</ng-template>
-              <app-biometric></app-biometric>
+              <app-biometric [documentNumber]="documentNumber"></app-biometric>
             </form>
           </div>
           <div align="end" class="nextButton">
